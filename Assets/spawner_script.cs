@@ -26,6 +26,7 @@ public class spawner_script : MonoBehaviour
         }
     }
 
+    [ContextMenu("spawn pipe")]
     void spawn() {
         Vector3 pos = transform.position + Vector3.up * Random.Range(y_down, y_up);
         Instantiate(pipe, pos, transform.rotation);
