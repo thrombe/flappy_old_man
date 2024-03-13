@@ -8,6 +8,7 @@ public class bird_scirpt : MonoBehaviour
     public Rigidbody2D rigidb;
     public float jump_vel;
     public GameObject you_win;
+    public GameObject you_died;
     public GameObject parent;
 
     // Start is called before the first frame update
@@ -33,11 +34,11 @@ public class bird_scirpt : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "key") {
             Vector2 vel = rigidb.velocity;
-            vel.x = 0.1f * Mathf.Sign(vel.x);
+            vel.x = 0.1f * Mathf.Max(Mathf.Sign(vel.x), 0.0f);
             rigidb.velocity = vel;
         } else if (other.gameObject.tag == "death wall") {
-            string name = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(name, LoadSceneMode.Single);
+            Destroy(parent);
+            you_died.SetActive(true);
         } else if (other.gameObject.tag == "win wall") {
             Destroy(parent);
             you_win.SetActive(true);
