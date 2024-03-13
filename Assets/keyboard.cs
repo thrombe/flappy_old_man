@@ -46,20 +46,17 @@ public class keyboard : MonoBehaviour
         foreach (char k in Input.inputString) {
             if (march(k)) {
                 GameObject t = Instantiate(key, transform.position + Vector3.up * 0.03f, transform.rotation);
-                t.transform.parent = transform;
+                t.transform.SetParent(transform);
 
                 TMP_Text txt = t.GetComponent<TMP_Text>();
                 txt.text = k.ToString();
-                txt.transform.parent = t.transform;
+                txt.transform.SetParent(t.transform);
 
                 Rigidbody2D rgd = t.GetComponent<Rigidbody2D>();
                 rgd.bodyType = RigidbodyType2D.Dynamic;
                 rgd.velocity = (player.transform.position - t.transform.position).normalized * 20.5f;
                 rgd.mass = 0.1f;
                 rgd.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-
-                // t.GetComponent<CircleCollider2D>().enabled = true;
-                // t.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
     }
