@@ -29,6 +29,7 @@
         targetPkgs = p: (packages p) ++ custom-commands;
         runScript = "${pkgs.zsh}/bin/zsh";
         profile = ''
+          export FHS=1
           source .env
         '';
       };
