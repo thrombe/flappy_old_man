@@ -25,6 +25,13 @@ public class keyboard : MonoBehaviour
     void Update()
     {
 
+        if (index >= word.Length) {
+            word = "wokak";
+            TMP_Text text = key.GetComponent<TMP_Text>();
+            text.text = word;
+            index = 0;
+        }
+
         Vector3 pos = transform.position;
         pos.x = player.transform.position.x;
         transform.position = pos;
@@ -59,12 +66,10 @@ public class keyboard : MonoBehaviour
 
     bool march(char k) {
         // return k == 'w';
-        if (word.Length == index) {
-            index = 0;
-        }
-
         if (word.Length > index && word[index] == k) {
             index += 1;
+            TMP_Text text = key.GetComponent<TMP_Text>();
+            text.text = "<color=\"red\">" + word[..index] + "</color>" + word[index..];
             return true;
         }
 
