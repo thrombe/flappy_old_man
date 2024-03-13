@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - key
+  - death wall
+  - win wall
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - pipe
   - platform
   - wall
-  - 
-  - 
+  - death wall
+  - win wall
   - 
   - 
   - 
